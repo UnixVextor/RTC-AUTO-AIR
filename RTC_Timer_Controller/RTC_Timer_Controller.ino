@@ -129,7 +129,7 @@ void TurnAirOff() {
 
 void StartRelay() {
   digitalWrite(RelayPin, HIGH);
-  delay(100);
+  delay(200);
   digitalWrite(RelayPin, LOW);
 }
 
@@ -230,7 +230,7 @@ void printDate(int row, const RtcDateTime& dt) {
 
 bool checkRangeTime(const RtcDateTime& dt, int init, int end) {
   hour = (int)dt.Hour();
-  for (int i = init; i <= init + 19; i++) {
+  for (int i = init; i < init + 19; i++) {
     if (hour == i % 24) {
       Serial.println(i % 24);
       return true;
