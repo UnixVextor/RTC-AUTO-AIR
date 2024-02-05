@@ -33,9 +33,9 @@ int reading[3];
 int count = 0;
 
 // Time
-// int setTimeAir[2][3] = { { 7, 0, 0 }, { 16, 0, 0 } };  //Air 1
-// int setTimeAir[2][3] = {{12,0,0}, {7,0,0}};  //Air 2
-int setTimeAir[2][3] = {{2,0,0}, {21,0,0}};  //Air 3
+// int setTimeAir[2][3] = {{ 7, 0, 0 }, { 2, 0, 0 }};  //Air 1
+int setTimeAir[2][3] = {{12,0,0}, {7,0,0}};  //Air 2
+// int setTimeAir[2][3] = {{2,0,0}, {21,0,0}};  //Air 3
 
 // Relay
 int RelayPin = 5;
@@ -229,9 +229,10 @@ void printDate(int row, const RtcDateTime& dt) {
 }
 
 bool checkRangeTime(const RtcDateTime& dt, int init, int end) {
-  hour = (int)dt.Hour();
+  uint8_t Hour;
+  Hour = (int)dt.Hour();
   for (int i = init; i < init + 19; i++) {
-    if (hour == i % 24) {
+    if (Hour == i % 24) {
       Serial.println(i % 24);
       return true;
     }
